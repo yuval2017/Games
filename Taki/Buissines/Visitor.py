@@ -5,9 +5,14 @@ class Visitor:
     self._id = id
     self._game_position: int = game_position
     self._cards = cards
+    
   @property
   def cards(self) -> List[Card]:
     return self._cards
+  
+  def add_cards(self, cards:list[Card])->None:
+    self._cards.append(cards)
+
   def give_cards(self, cards) -> None:
     self._cards = cards
 
