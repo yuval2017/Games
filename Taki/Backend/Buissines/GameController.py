@@ -25,12 +25,12 @@ class GameController:
     self.next_id = 0
     self._games: Dict[id, Game] = dict()
      
-  def ceate_new_game(self)->List[cards]:
+  def ceate_new_game(self)->List[Card]:
     cards = [Card(c) for c in cards]
     self._games[self.next_id] = DeckCards(cards)
     return cards
 
-  def add_cards_to_board(self, game_id, cards: List[cards], visitor:Visitor) -> Exception | None:
+  def add_cards_to_board(self, game_id, cards: List[Card], visitor:Visitor) -> Exception | None:
     if game_id not in self._games:
       raise Exception("No game with id: " + game_id)
     self._games[game_id].add_cards_on_board(cards)
@@ -39,3 +39,4 @@ class GameController:
     if game_id not in self._games:
       raise Exception("No game with id: " + game_id)
     return self._games[game_id].draw_card(visitor)
+  

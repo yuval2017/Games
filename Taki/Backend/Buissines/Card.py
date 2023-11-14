@@ -10,4 +10,5 @@ class Card:
   def type(self, new_type: str) -> None:
     self._type = new_type
     
-  
+  def __str__(self) -> str:
+    return self._type

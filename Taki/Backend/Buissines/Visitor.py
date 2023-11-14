@@ -1,4 +1,4 @@
-from Card import *
+from .Card import Card
 from typing import List
 class Visitor:
   def __init__(self, id, game_position: int, cards: List[Card] = None) -> None:

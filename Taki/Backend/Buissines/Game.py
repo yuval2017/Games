@@ -1,12 +1,10 @@
-
-from Card import *
-from Visitor import *
-from DeckCards import *
+from .Visitor import Visitor
+from .Card import Card
+from .DeckCards import DeckCards
 from typing import List
 
 
 class Game:
-
   def __init__(self, visitors_list: List[Visitor], deck_cards: DeckCards, cards_num: int = 5) -> None:
 
     self._player_turn: int = 0
