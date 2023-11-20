@@ -1,0 +1,36 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat App</title>
+</head>
+<body>
+    <ul id="messages"></ul>
+    <form id="messageForm" action="">
+        <input id="messageInput" autocomplete="off" />
+        <button>Send</button>
+    </form>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <script>
+        const socket = io();
+
+        document.querySelector('form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const message = document.querySelector('#messageInput').value;
+            socket.emit('message', message);
+            document.querySelector('#messageInput').value = '';
+            return false;
+        });
+
+        socket.on('message', function (msg) {
+            const ul = document.querySelector('#messages');
+            const li = document.createElement('li');
+            li.appendChild(document.createTextNode(msg));
+            ul.appendChild(li);
+        });
+    </script>
+</body>
+</html>
